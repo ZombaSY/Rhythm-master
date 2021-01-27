@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 3f94420dde4eac843a3baec2a5895db2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - my_note: {fileID: 6636045049481964127, guid: c89f772e08a54d74fa39f130817230b2, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

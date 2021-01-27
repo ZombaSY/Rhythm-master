@@ -47,7 +47,7 @@ public class KeyHandler : MonoBehaviour
     {
         this.note_queue.Enqueue(key_code);
     }
-    public void InstantiateNote()
+    public void InstantiateNote(int key_mode)
     {
         /*
         1. 노트 queue 확인
@@ -55,17 +55,52 @@ public class KeyHandler : MonoBehaviour
         3. keycode 위치로 instantiate
         */
 
-        for (int i = 0; i < this.note_queue.Count; i++)
+        switch (key_mode) 
         {
-            KeyCode key_code = this.note_queue.Dequeue();
+            case 4: // 4k
+                for (int i = 0; i < this.note_queue.Count; i++)
+                {
+                    KeyCode key_code = this.note_queue.Dequeue();
 
-            if (key_code == this.key_6[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-1.5f, 5f, 0f), Quaternion.identity);
-            if (key_code == this.key_6[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
-            if (key_code == this.key_6[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
-            if (key_code == this.key_6[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
-            if (key_code == this.key_6[4]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
-            if (key_code == this.key_6[5]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(1.5f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_4[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_4[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_4[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_4[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
+                }
+                break;
 
+            case 6: // 6k
+                for (int i = 0; i < this.note_queue.Count; i++)
+                {
+                    KeyCode key_code = this.note_queue.Dequeue();
+
+                    if (key_code == this.key_6[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-1.5f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_6[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_6[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_6[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_6[4]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_6[5]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(1.5f, 5f, 0f), Quaternion.identity);
+
+                }
+                break;
+
+            case 8: // 8k
+                for (int i = 0; i < this.note_queue.Count; i++)
+                {
+                    KeyCode key_code = this.note_queue.Dequeue();
+
+                    if (key_code == this.key_8[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-1.5f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_8[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_8[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_8[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_8[4]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
+                    if (key_code == this.key_8[5]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(1.5f, 5f, 0f), Quaternion.identity);
+
+                }
+                break;
+
+            default:
+                break;
         }
     }
 

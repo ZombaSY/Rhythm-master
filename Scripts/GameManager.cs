@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject Note_Prefab_1;
     public GameObject Note_Prefab_2;
 
-    private int CURRENT_KEY_MODE = 2;   // 1: 4k, 2: 6k, 3: 8k
+    private int CURRENT_KEY_MODE = 6;   // 1: 4k, 2: 6k, 3: 8k
+    private int note_frame = 3;
 
     public float note_speed = 10f;
 
@@ -28,12 +29,12 @@ public class GameManager : MonoBehaviour
     {
         ProcessKeyEvent(CURRENT_KEY_MODE);
 
-        if (Time.frameCount % 3 == 0)
+        if (Time.frameCount % note_frame == 0)
         {
                 // Stick to frame untill instantiate all notes
                 do
             {
-                keyHandler_comp.InstantiateNote();
+                keyHandler_comp.InstantiateNote(this.CURRENT_KEY_MODE);
             } while (!keyHandler_comp.IsNoteQueueClear());
         }
     }
@@ -44,15 +45,15 @@ public class GameManager : MonoBehaviour
         {
             switch (key_mode)
             {
-                case 1:
+                case 4:
                     ProcessNoteKey(keyHandler_comp.key_4);
                     break;
 
-                case 2:
+                case 6:
                     ProcessNoteKey(keyHandler_comp.key_6);
                     break;
 
-                case 3:
+                case 8:
                     ProcessNoteKey(keyHandler_comp.key_8);
                     break;
 
@@ -63,10 +64,38 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown("1"))
             {
                 this.note_speed--;
+                Debug.Log("Speed Down");
             }
             if (Input.GetKeyDown("2"))
             {
                 this.note_speed++;
+                Debug.Log("Speed Up");
+            }
+
+            if (Input.GetKeyDown("4"))
+            {
+                this.CURRENT_KEY_MODE = 4;
+                OnChangeKeyMode();
+                Debug.Log("To key 4");
+            }
+
+            if (Input.GetKeyDown("6"))
+            {
+                this.CURRENT_KEY_MODE = 6;
+                OnChangeKeyMode();
+                Debug.Log("To key 6");
+            }
+
+            if (Input.GetKeyDown("8"))
+            {
+                this.CURRENT_KEY_MODE = 8;
+                OnChangeKeyMode();
+                Debug.Log("To key 8");
+            }
+
+            if (Input.GetKey("escape"))
+            {
+                Application.Quit();
             }
 
         }

@@ -29,7 +29,6 @@ public class Note : MonoBehaviour
     void Update()
     {
         note_speed = gameManager_comp.GetNoteSpeed();
-        Debug.Log(note_speed);
 
         gameObject.transform.Translate(note_vector * note_speed);
     }

@@ -6,6 +6,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
     private const int FRAME_RATE = 144;
+    private const int MAXIMUM_INPUTS = 6; // maximum inputs on floating note, as the Unity dose not support multiple inputs per frame
+    private const int MAXIMUM_INPUT_INTERVAL = 2;
 
     public GameObject keyHandler;
     public GameObject noteHandler;
@@ -16,8 +18,8 @@ public class GameManager : MonoBehaviour
     private static NoteHandler noteHandler_comp;
 
     private int CURRENT_KEY_MODE = 6;
-    private int note_frame = 6; // maximum inputs on floating note.
     private int note_frame_begin;
+    private int note_frame_last_key_down;
 
     private bool is_getting_inputs = false;
 
@@ -46,10 +48,13 @@ public class GameManager : MonoBehaviour
 
     private void ProcessKeyEvent(int key_mode)
     {
+        int current_frame = Time.frameCount;
+
         if (!is_getting_inputs) note_frame_begin = Time.frameCount; // mark the input beginning frame.
 
         if (Input.anyKeyDown)
         {
+            note_frame_last_key_down = Time.frameCount;
             is_getting_inputs = true;
 
             switch (key_mode)
@@ -107,10 +112,10 @@ public class GameManager : MonoBehaviour
                 Application.Quit();
             }
         }
-        else { is_getting_inputs = false;  }
+        else if ((current_frame - note_frame_last_key_down) < MAXIMUM_INPUT_INTERVAL) is_getting_inputs = true ;
+        else { is_getting_inputs = false; }
 
-        int current_frame = Time.frameCount;
-        if ((current_frame - note_frame_begin) > note_frame) is_getting_inputs = false;
+        if ((current_frame - note_frame_begin) > MAXIMUM_INPUTS) is_getting_inputs = false;
 
         void ProcessNoteKey(KeyCode[] key_codes)
         {

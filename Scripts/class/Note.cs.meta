@@ -5,7 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - DeadLine: {fileID: 5099817819115520052, guid: 6ae2ef94d03519f4e8003fddba4e86b2, type: 3}
-  - gameManager: {fileID: 6093498609245282101, guid: 7d351a47bd3974f47bada468392beb7c, type: 3}
+  - gameManager: {fileID: 6229130515681913232, guid: ab7840c8a98640c419433a2ff09b6fa2, type: 3}
+  - noteHandler: {fileID: 806049479668364270, guid: 1f60397d1bc34894f8ecb8573e62f461, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

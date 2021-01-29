@@ -7,24 +7,15 @@ public class KeyHandler : MonoBehaviour
 {
     public GameObject gameManager;
 
-    private GameManager gameManager_comp;
+    private static GameManager gameManager_comp;
 
-    private Queue<KeyCode> note_queue = new Queue<KeyCode>();
-
-    public KeyCode[] key_4 = new KeyCode[] { KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon };
-    public KeyCode[] key_6 = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon, KeyCode.Quote };
-    public KeyCode[] key_8 = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon, KeyCode.Quote, KeyCode.LeftShift, KeyCode.RightShift };
+    private static KeyCode[] key_4 = new KeyCode[] { KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon };
+    private static KeyCode[] key_6 = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon, KeyCode.Quote };
+    private static KeyCode[] key_8 = new KeyCode[] { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.L, KeyCode.Semicolon, KeyCode.Quote, KeyCode.LeftShift, KeyCode.RightShift };
 
     // Start is called before the first frame update
     void Start()
     {
-        this.note_queue.Enqueue(KeyCode.A);
-        this.note_queue.Enqueue(KeyCode.S);
-        this.note_queue.Enqueue(KeyCode.D);
-        this.note_queue.Enqueue(KeyCode.L);
-        this.note_queue.Enqueue(KeyCode.Semicolon);
-        this.note_queue.Enqueue(KeyCode.Quote);
-
         gameManager_comp = gameManager.GetComponent<GameManager>();
     }
 
@@ -43,71 +34,22 @@ public class KeyHandler : MonoBehaviour
         //this.key_6 = keys;
     }
 
-    public void AddNoteQueue(KeyCode key_code)
+    public void SetKeys_8(char[] keys)
     {
-        this.note_queue.Enqueue(key_code);
+        //this.key_6 = keys;
     }
-    public void InstantiateNote(int key_mode)
+
+    public KeyCode[] GetKeys_4()
     {
-        /*
-        1. 노트 queue 확인
-        2. queue 안에 있는 keycode 확인
-        3. keycode 위치로 instantiate
-        */
-
-        switch (key_mode) 
-        {
-            case 4: // 4k
-                for (int i = 0; i < this.note_queue.Count; i++)
-                {
-                    KeyCode key_code = this.note_queue.Dequeue();
-
-                    if (key_code == this.key_4[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_4[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_4[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_4[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
-                }
-                break;
-
-            case 6: // 6k
-                for (int i = 0; i < this.note_queue.Count; i++)
-                {
-                    KeyCode key_code = this.note_queue.Dequeue();
-
-                    if (key_code == this.key_6[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-1.5f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_6[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_6[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_6[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_6[4]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_6[5]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(1.5f, 5f, 0f), Quaternion.identity);
-
-                }
-                break;
-
-            case 8: // 8k
-                for (int i = 0; i < this.note_queue.Count; i++)
-                {
-                    KeyCode key_code = this.note_queue.Dequeue();
-
-                    if (key_code == this.key_8[0]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-1.5f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_8[1]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(-0.9f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_8[2]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(-0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_8[3]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(0.3f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_8[4]) Instantiate(gameManager_comp.Note_Prefab_2, new Vector3(0.9f, 5f, 0f), Quaternion.identity);
-                    if (key_code == this.key_8[5]) Instantiate(gameManager_comp.Note_Prefab_1, new Vector3(1.5f, 5f, 0f), Quaternion.identity);
-
-                }
-                break;
-
-            default:
-                break;
-        }
+        return key_4;
+    }
+    public KeyCode[] GetKeys_6()
+    {
+        return key_6;
     }
 
-    public bool IsNoteQueueClear() {
-        if (this.note_queue.Count == 0) return true;
-        else return false;
+    public KeyCode[] GetKeys_8()
+    {
+        return key_8;
     }
-
-    public int GetNotQueueCount() { return this.note_queue.Count;  }
 }

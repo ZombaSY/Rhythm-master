@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6093498609245282101
+--- !u!1 &6229130515681913232
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6093498609245282103}
-  - component: {fileID: 6093498609245282100}
+  - component: {fileID: 6229130515681913234}
+  - component: {fileID: 6229130515681913233}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,32 +17,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6093498609245282103
+--- !u!4 &6229130515681913234
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093498609245282101}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 6229130515681913232}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6093498609245282100
+--- !u!114 &6229130515681913233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093498609245282101}
+  m_GameObject: {fileID: 6229130515681913232}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2756b3e73b963cf49b24d15401310244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyHandler: {fileID: 976316330935525753, guid: c250136f83057ff4095b013b795a824e, type: 3}
+  keyHandler: {fileID: 2143254946956074540, guid: 94db81ee11cf60049a86b12767ab7a37, type: 3}
+  noteHandler: {fileID: 806049479668364270, guid: 1f60397d1bc34894f8ecb8573e62f461, type: 3}
   Note_Prefab_1: {fileID: 6636045049481964127, guid: c89f772e08a54d74fa39f130817230b2, type: 3}
   Note_Prefab_2: {fileID: 754738321103035055, guid: 309a6e99eda6585498e71cd546b236f6, type: 3}
+  note_speed: 10

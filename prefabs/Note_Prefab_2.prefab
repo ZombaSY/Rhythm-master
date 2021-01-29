@@ -145,4 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeadLine: {fileID: 4077915197506532886, guid: 10ca8ebba0c5d4e458b589b8a742f74b, type: 3}
-  gameManager: {fileID: 6093498609245282101, guid: 7d351a47bd3974f47bada468392beb7c, type: 3}
+  gameManager: {fileID: 6229130515681913232, guid: ab7840c8a98640c419433a2ff09b6fa2, type: 3}
+  noteHandler: {fileID: 806049479668364270, guid: 1f60397d1bc34894f8ecb8573e62f461, type: 3}
